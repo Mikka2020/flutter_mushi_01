@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import './settings.dart';
+
+import './home.dart';
+import './map.dart';
 import './mushi_list.dart';
 
 void main() {
@@ -35,12 +37,9 @@ class _TopPageState extends State<TopPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: SafeArea(
         child: IndexedStack(
-          children: const [MushiList(), Settings()],
+          children: const [Home(), MushiList(), Map()],
           index: currentBtmNav,
         ),
       ),
@@ -54,11 +53,15 @@ class _TopPageState extends State<TopPage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
-            label: 'home',
+            label: 'ホーム',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_book),
+            label: 'さつえい',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'settings',
+            label: 'マップ',
           ),
         ],
       ),

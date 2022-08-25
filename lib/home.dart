@@ -1,11 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mushi_01/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Home extends StatelessWidget {
+import './flutter_overboard_page.dart';
+import './main.dart';
+
+void _showTutorial(BuildContext context) async {
+  final pref = await SharedPreferences.getInstance();
+
+  if (pref.getBool('isAlreadyFirstLaunch') != true) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return FlutterOverboardPage();
+        },
+        fullscreenDialog: true,
+      ),
+    );
+    pref.setBool('isAlreadyFirstLaunch', true);
+  }
+}
+
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
   static String btmNavId = "home";
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance
+        ?.addPostFrameCallback((_) => _showTutorial(context));
     return Scaffold(
       body: Column(
         children: [
@@ -21,7 +50,11 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ElevatedButton(
-                onPressed: () => {},
+                onPressed: () async {
+                  final pref = await SharedPreferences.getInstance();
+                  pref.setBool('isAlreadyFirstLaunch', false);
+                  setState(() {});
+                },
                 child: const Text("あそびかた"),
               ),
               ElevatedButton(

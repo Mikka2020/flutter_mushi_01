@@ -13,6 +13,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   path: ^1.8.0
+  flutter_overboard: 3.1.1
+  shared_preferences: 2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -21,3 +23,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+  - assets/
+  - assets/img/

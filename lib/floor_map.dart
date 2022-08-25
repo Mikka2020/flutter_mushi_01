@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Map extends StatelessWidget {
-  const Map({Key? key}) : super(key: key);
+class FloorMap extends StatelessWidget {
+  const FloorMap({Key? key}) : super(key: key);
+  static String btmNavId = "floor_map";
 
   @override
   Widget build(BuildContext context) {

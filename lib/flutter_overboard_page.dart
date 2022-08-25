@@ -17,6 +17,7 @@ class FlutterOverboardPage extends StatelessWidget {
           showBullets: true,
           nextText: "次へ",
           skipText: "スキップ",
+          finishText: "遊んでみる",
           skipCallback: () {
             // when user select SKIP
             Navigator.pop(context);
@@ -34,20 +35,32 @@ class FlutterOverboardPage extends StatelessWidget {
     PageModel(
         color: const Color(0xFF95cedd),
         imageAssetPath: 'assets/0.png',
-        title: '文字を表示できます',
-        body: '細かい説明をbodyに指定して書くことが出来ます',
+        title: '[アプリ名]',
+        body: 'このアプリは虫を撮影して学べる虫図鑑アプリです！',
         doAnimateImage: true),
     PageModel(
-        color: const Color(0xFF9B90BC),
-        imageAssetPath: 'assets/1.png',
-        title: '左右のスワイプ',
-        body: 'NEXTを押さなくても左右にスワイプすることで画面の切替が出来ます',
+        color: const Color(0xFF95cedd),
+        imageAssetPath: 'assets/0.png',
+        title: '虫のさつえい',
+        body: 'まず下のカメラマークから虫を撮影してみよう！',
+        doAnimateImage: true),
+    PageModel(
+        color: const Color(0xFF95cedd),
+        imageAssetPath: 'assets/0.png',
+        title: '虫のはんべつ',
+        body: '撮影したら[ずかんに記録]ボタンを押してずかんにとうろくしよう！',
+        doAnimateImage: true),
+    PageModel(
+        color: const Color(0xFF95cedd),
+        imageAssetPath: 'assets/0.png',
+        title: 'いろんな虫ずかん',
+        body: 'ずかんでは撮影した虫についてのいろいろな事が知れるよ！',
         doAnimateImage: true),
     PageModel.withChild(
-        child: Padding(
-            padding: EdgeInsets.only(bottom: 25.0),
+        child: const Padding(
+            padding: EdgeInsets.only(bottom: 25.0, right: 25.0, left: 25.0),
             child: Text(
-              "さあ、始めましょう",
+              "さあ、いろいろな虫を集めてみましょう！",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 32,

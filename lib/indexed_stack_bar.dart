@@ -23,7 +23,7 @@ class _IndexedStackBarState extends State<IndexedStackBar> {
   late var decodeResult;
   final picker = ImagePicker();
   Future getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
       if (pickedFile != null) {

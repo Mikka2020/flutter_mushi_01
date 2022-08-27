@@ -1,6 +1,7 @@
 import 'package:adobe_xd/adobe_xd.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mushi_01/main.dart';
+import 'package:flutter_mushi_01/mushi_list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -95,12 +96,12 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                          Text(
+                          const Text(
                             'あそびかた',
                             style: TextStyle(
                               fontFamily: 'Tsukushi A Round Gothic',
                               fontSize: 15,
-                              color: const Color(0xffffffff),
+                              color: Color(0xffffffff),
                               fontWeight: FontWeight.w700,
                             ),
                             softWrap: false,
@@ -149,7 +150,12 @@ class _HomeState extends State<Home> {
           Padding(
             padding: EdgeInsets.only(top: 20),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const MushiList()),
+                );
+              },
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

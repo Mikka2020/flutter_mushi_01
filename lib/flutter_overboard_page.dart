@@ -33,26 +33,32 @@ class FlutterOverboardPage extends StatelessWidget {
 
   final pages = [
     PageModel(
-        color: const Color(0xFF95cedd),
+        color: const Color(0xFF79d9bf),
         imageAssetPath: 'assets/0.png',
         title: '[アプリ名]',
         body: 'このアプリは虫を撮影して学べる虫図鑑アプリです！',
         doAnimateImage: true),
     PageModel(
-        color: const Color(0xFF95cedd),
-        imageAssetPath: 'assets/0.png',
+        color: const Color(0xFFa679d9),
+        imageAssetPath: 'assets/img/ss1.png',
         title: '虫のさつえい',
         body: 'まず下のカメラマークから虫を撮影してみよう！',
         doAnimateImage: true),
     PageModel(
-        color: const Color(0xFF95cedd),
-        imageAssetPath: 'assets/0.png',
+        color: const Color(0xFFd9d379),
+        imageAssetPath: 'assets/img/ss2.png',
         title: '虫のはんべつ',
-        body: '撮影したら[ずかんに記録]ボタンを押してずかんにとうろくしよう！',
+        body: '撮影したら[はんべつ]ボタンを押して\nはんべつしてみよう！',
+        doAnimateImage: true),
+    PageModel(
+        color: const Color(0xFFd9d379),
+        imageAssetPath: 'assets/img/ss3.png',
+        title: 'ずかんにとうろく',
+        body: '撮ったむしは[とうろく]ボタンを押して\nずかんにとうろくできるよ！',
         doAnimateImage: true),
     PageModel(
         color: const Color(0xFF95cedd),
-        imageAssetPath: 'assets/0.png',
+        imageAssetPath: 'assets/1.png',
         title: 'いろんな虫ずかん',
         body: 'ずかんでは撮影した虫についてのいろいろな事が知れるよ！',
         doAnimateImage: true),

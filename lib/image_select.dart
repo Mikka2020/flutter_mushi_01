@@ -152,7 +152,9 @@ class _ImageSelectState extends State<ImageSelect> {
                       ),
                     ),
                   )
-                : const Spacer(),
+                : Container(
+                    height: 5,
+                  ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: decodeResult == null

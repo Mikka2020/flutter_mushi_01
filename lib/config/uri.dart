@@ -4,3 +4,6 @@ const endpointIos = "http://bravrr.bounceme.net:8081/predict";
 const endpointAndroid = "http://bravrr.bounceme.net:8081/predict";
 
 const endpoint = "http://bravrr.bounceme.net:8081/predict";
+
+// insect info endpoint
+const insectEndpoint = "http://bravrr.bounceme.net:3000/insects";

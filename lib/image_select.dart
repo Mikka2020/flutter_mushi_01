@@ -6,14 +6,25 @@ import 'package:http/http.dart' as http;
 
 import './config/uri.dart';
 
-class ImageSelect extends StatelessWidget {
+class ImageSelect extends StatefulWidget {
   const ImageSelect({Key? key, required this.image}) : super(key: key);
   final File image;
+
+  @override
+  State<ImageSelect> createState() => _ImageSelectState(image: image);
+}
+
+class _ImageSelectState extends State<ImageSelect> {
+  _ImageSelectState({required this.image});
+  var image;
+  var decodeResult;
+  var decodeInsectResult;
 
   void printImagePath(selectImage) {
     debugPrint("print関数デバッグ!: " + selectImage.toString());
   }
 
+  //画像判別APIアップロード
   Future upload(String filePath) async {
     // connect to localhost
     Uri uri = Uri.parse(endpoint);
@@ -31,9 +42,20 @@ class ImageSelect extends StatelessWidget {
       var responseString = await response.stream.bytesToString();
       // jsondecode
 
-      final decodeResult = json.decode(responseString);
+      decodeResult = json.decode(responseString);
+      insectApi(decodeResult[0]['index']);
       print(decodeResult);
     }
+  }
+
+  //昆虫情報API
+  Future insectApi(String id) async {
+    Uri uri = Uri.parse(insectEndpoint + '/' + id);
+    var insectResponse = await http.get(uri);
+    decodeInsectResult = json.decode(insectResponse.body);
+    print(decodeInsectResult["results"]);
+    // 遅延させて再読み込み
+    setState(() {});
   }
 
   @override
@@ -43,53 +65,151 @@ class ImageSelect extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const Spacer(),
             Container(
-              alignment: const Alignment(0.0, 0.0),
-              height: 200,
-              width: 400,
-              margin: const EdgeInsets.all(40),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(17),
-                  border: Border.all(width: 4, color: Colors.grey)),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(13),
-                child: Image.file(
-                  File(image.path),
-                  fit: BoxFit.fill,
-                  width: 420,
+              margin: const EdgeInsets.only(top: 80),
+              child: decodeResult == null
+                  ? const Text(
+                      'はんべつ',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  : Text(
+                      "この虫は..." +
+                          decodeInsectResult["results"][0]["insect_name"] +
+                          "!",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: decodeResult == null
+                  ? const Text("この虫をはんべつしますか？")
+                  : const Text("この虫をとうろくしますか？"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Container(
+                alignment: const Alignment(0.0, 0.0),
+                height: 200,
+                width: 400,
+                margin: const EdgeInsets.only(
+                    top: 20, bottom: 30, right: 40, left: 40),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(17),
+                    border: Border.all(width: 4, color: Colors.grey)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(13),
+                  child: Image.file(
+                    File(image.path),
+                    fit: BoxFit.fill,
+                    width: 420,
+                  ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: InkWell(
-                onTap: () {
-                  upload(image.path);
-                },
-                child: Container(
-                  child: const Center(
-                    child: Text(
-                      'ずかんに記録',
-                      style: TextStyle(
-                        fontFamily: 'Tsukushi A Round Gothic',
-                        fontSize: 15,
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w700,
-                      ),
-                      softWrap: false,
+            decodeResult != null
+                ? Container(
+                    height: 250,
+                    width: 280,
+                    decoration: BoxDecoration(
+                      color: const Color(0xffffffff),
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(
+                          width: 4.0, color: const Color(0xffb4b4b4)),
                     ),
-                  ),
-                  height: 50,
-                  width: 140,
-                  decoration: BoxDecoration(
-                    color: const Color(0x80bf7107),
-                    borderRadius: BorderRadius.circular(10.0),
-                    border:
-                        Border.all(width: 4.0, color: const Color(0xffb4b4b4)),
-                  ),
-                ),
-              ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Text(
+                              decodeInsectResult["results"][0]["insect_moku"] +
+                                  "目 " +
+                                  decodeInsectResult["results"][0]
+                                      ["insect_ka"] +
+                                  "科 ",
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, bottom: 10, right: 15, left: 15),
+                            child: Text(decodeInsectResult["results"][0]
+                                ["insect_text"]),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                : const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: decodeResult == null
+                  ? InkWell(
+                      onTap: () {
+                        upload(image.path);
+                      },
+                      child: Container(
+                        child: const Center(
+                          child: Text(
+                            'はんべつする',
+                            style: TextStyle(
+                              fontFamily: 'Tsukushi A Round Gothic',
+                              fontSize: 15,
+                              color: const Color(0xffffffff),
+                              fontWeight: FontWeight.w700,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                        height: 50,
+                        width: 140,
+                        decoration: BoxDecoration(
+                          color: const Color(0x80bf7107),
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(
+                              width: 4.0, color: const Color(0xffb4b4b4)),
+                        ),
+                      ),
+                    )
+                  : InkWell(
+                      onTap: () {
+                        upload(image.path);
+                      },
+                      child: Container(
+                        child: const Center(
+                          child: Text(
+                            'とうろくする',
+                            style: TextStyle(
+                              fontFamily: 'Tsukushi A Round Gothic',
+                              fontSize: 15,
+                              color: const Color(0xffffffff),
+                              fontWeight: FontWeight.w700,
+                            ),
+                            softWrap: false,
+                          ),
+                        ),
+                        height: 50,
+                        width: 140,
+                        decoration: BoxDecoration(
+                          color: const Color(0x80bf7107),
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(
+                              width: 4.0, color: const Color(0xffb4b4b4)),
+                        ),
+                      ),
+                    ),
             ),
             const Spacer(),
           ],

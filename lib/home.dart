@@ -122,16 +122,31 @@ class _HomeState extends State<Home> {
                 InkWell(
                   onTap: () {},
                   child: Container(
-                    child: const Center(
-                      child: Text(
-                        '(仮)',
-                        style: TextStyle(
-                          fontFamily: 'Tsukushi A Round Gothic',
-                          fontSize: 15,
-                          color: const Color(0xffffffff),
-                          fontWeight: FontWeight.w700,
-                        ),
-                        softWrap: false,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 40,
+                            height: 40,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/img/web.png'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            '昆虫館のサイト',
+                            style: TextStyle(
+                              fontFamily: 'Tsukushi A Round Gothic',
+                              fontSize: 15,
+                              color: Color(0xffffffff),
+                              fontWeight: FontWeight.w700,
+                            ),
+                            softWrap: false,
+                          ),
+                        ],
                       ),
                     ),
                     height: 90,

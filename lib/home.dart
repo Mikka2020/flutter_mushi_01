@@ -49,16 +49,31 @@ class _HomeState extends State<Home> {
         children: [
           const Spacer(),
           Container(
-            child: const Center(
-              child: Text(
-                '見つけた数',
-                style: TextStyle(
-                  fontFamily: 'Tsukushi A Round Gothic',
-                  fontSize: 15,
-                  color: const Color(0x80bf7107),
-                  fontWeight: FontWeight.w700,
-                ),
-                softWrap: false,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '見つけた数',
+                    style: TextStyle(
+                      fontFamily: 'Tsukushi A Round Gothic',
+                      fontSize: 20,
+                      color: const Color(0x80bf7107),
+                      fontWeight: FontWeight.w700,
+                    ),
+                    softWrap: false,
+                  ),
+                  Text(
+                    '10/88種類',
+                    style: TextStyle(
+                      fontFamily: 'Tsukushi A Round Gothic',
+                      fontSize: 25,
+                      color: const Color(0x80bf7907),
+                      fontWeight: FontWeight.w800,
+                    ),
+                    softWrap: false,
+                  ),
+                ],
               ),
             ),
             height: 130,

@@ -39,21 +39,57 @@ class ImageSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffF9FFD5),
       body: Center(
         child: Column(
           children: [
             const Spacer(),
-            SizedBox(
-              width: 360,
-              height: 400,
-              child: ColoredBox(
-                color: Colors.blue.shade200,
-                child: Image.file(File(image.path)),
+            Container(
+              alignment: const Alignment(0.0, 0.0),
+              height: 200,
+              width: 400,
+              margin: const EdgeInsets.all(40),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(17),
+                  border: Border.all(width: 4, color: Colors.grey)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(13),
+                child: Image.file(
+                  File(image.path),
+                  fit: BoxFit.fill,
+                  width: 420,
+                ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () => upload(image.path),
-              child: const Text("ずかんに記録"),
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: InkWell(
+                onTap: () {
+                  upload(image.path);
+                },
+                child: Container(
+                  child: const Center(
+                    child: Text(
+                      'ずかんに記録',
+                      style: TextStyle(
+                        fontFamily: 'Tsukushi A Round Gothic',
+                        fontSize: 15,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w700,
+                      ),
+                      softWrap: false,
+                    ),
+                  ),
+                  height: 50,
+                  width: 140,
+                  decoration: BoxDecoration(
+                    color: const Color(0x80bf7107),
+                    borderRadius: BorderRadius.circular(10.0),
+                    border:
+                        Border.all(width: 4.0, color: const Color(0xffb4b4b4)),
+                  ),
+                ),
+              ),
             ),
             const Spacer(),
           ],

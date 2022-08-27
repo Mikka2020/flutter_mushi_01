@@ -67,11 +67,11 @@ class _IndexedStackBarState extends State<IndexedStackBar> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.list),
+            icon: Icon(Icons.home),
             label: 'ホーム',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.map_outlined),
             label: 'フロアマップ',
           ),
         ],

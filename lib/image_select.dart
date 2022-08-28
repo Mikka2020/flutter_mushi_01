@@ -221,6 +221,12 @@ class _ImageSelectState extends State<ImageSelect> {
                       )
                     : InkWell(
                         onTap: () {
+                          const snackBar = SnackBar(
+                            content: Text('ずかんに登録しました！'),
+                            backgroundColor: Colors.green,
+                            behavior: SnackBarBehavior.floating,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           regInsects.add(
                             RegisteredInsect(
                                 insectId: decodeInsectResult["results"][0]

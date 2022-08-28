@@ -58,7 +58,7 @@ class FlutterOverboardPage extends StatelessWidget {
         doAnimateImage: true),
     PageModel(
         color: const Color(0xFF95cedd),
-        imageAssetPath: 'assets/1.png',
+        imageAssetPath: 'assets/img/ss4.png',
         title: 'いろんな虫ずかん',
         body: 'ずかんでは撮影した虫についてのいろいろな事が知れるよ！',
         doAnimateImage: true),

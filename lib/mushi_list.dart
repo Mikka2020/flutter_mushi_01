@@ -12,13 +12,29 @@ class MushiList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.builder(
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-        itemCount: itemCount(),
-        itemBuilder: (context, index) {
-          return const InsectGridItem();
-        },
+      body: Container(
+        child: SafeArea(
+          child: Column(
+            children: [
+              ListTile(
+                leading: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.arrow_back),
+                ),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemCount: itemCount(),
+                  itemBuilder: (context, index) {
+                    return const InsectGridItem();
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

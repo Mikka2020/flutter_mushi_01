@@ -2,6 +2,7 @@ import 'package:adobe_xd/adobe_xd.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mushi_01/main.dart';
 import 'package:flutter_mushi_01/mushi_list.dart';
+import 'package:flutter_mushi_01/offcial_webpage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -135,7 +136,13 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const OfficialWebpage()),
+                    );
+                  },
                   child: Container(
                     child: Center(
                       child: Column(

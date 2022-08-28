@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io'; // Add this import
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart'; // Add this import back
 
 import 'src/navigation_controls.dart'; // Add this import
@@ -34,6 +35,7 @@ class _OfficialWebpageState extends State<OfficialWebpage> {
         actions: [
           NavigationControls(controller: controller),
         ],
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
         // ... to here.
       ),
       body: WebViewStack(controller: controller),

@@ -1,7 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
+import './models/insect.dart';
+
 class InsectDetail extends StatelessWidget {
-  const InsectDetail({Key? key}) : super(key: key);
+  const InsectDetail(
+      {Key? key, required this.insect, required this.regInsectFilePath})
+      : super(key: key);
+  final Insect insect;
+  final String regInsectFilePath;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +39,9 @@ class InsectDetail extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     child: Image(
-                      image: AssetImage("assets/no_image.png"),
+                      image: FileImage(File(regInsectFilePath)),
                       height: 200,
                       width: 200,
                     ),
@@ -42,9 +50,9 @@ class InsectDetail extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 16),
-                child: const Text(
-                  "オオゴマダラ",
-                  style: TextStyle(
+                child: Text(
+                  insect.name,
+                  style: const TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
                   ),

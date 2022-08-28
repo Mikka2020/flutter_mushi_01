@@ -10,7 +10,7 @@ class RegisteredInsectsDb {
         join(await getDatabasesPath(), registeredFileName),
         onCreate: (db, version) {
       return db.execute(
-        'CREATE TABLE $registeredTableName (id INTEGER PRIMARY KEY)',
+        'CREATE TABLE $registeredTableName (id INTEGER PRIMARY KEY, filePath Text)',
       );
     }, version: 1);
   }
@@ -30,6 +30,7 @@ class RegisteredInsectsDb {
     return List.generate(maps.length, (i) {
       return RegisteredInsect(
         insectId: maps[i]['id'],
+        filePath: maps[i]['filePath'],
       );
     });
   }

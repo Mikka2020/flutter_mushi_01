@@ -4,13 +4,18 @@ import "package:provider/provider.dart";
 import './floor_map.dart';
 import './home.dart';
 import './indexed_stack_bar.dart';
+import 'models/insect.dart';
 import 'models/registered_insect.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final insectsNotifier = InsectsNotifier();
   final registeredInsectsNotifier = RegisteredInsectsNotifier();
   runApp(MultiProvider(
     providers: [
+      ChangeNotifierProvider<InsectsNotifier>(
+        create: (context) => insectsNotifier,
+      ),
       ChangeNotifierProvider<RegisteredInsectsNotifier>(
         create: (context) => registeredInsectsNotifier,
       ),

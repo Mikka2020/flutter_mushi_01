@@ -53,6 +53,7 @@ class _IndexedStackBarState extends State<IndexedStackBar> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        elevation: 0.0,
         onPressed: getImage,
         child: const Icon(Icons.add_a_photo),
       ),

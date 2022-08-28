@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import "package:provider/provider.dart";
 
 import './floor_map.dart';
 import './home.dart';
 import './indexed_stack_bar.dart';
+import 'models/registered_insect.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final registeredInsectsNotifier = RegisteredInsectsNotifier();
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<RegisteredInsectsNotifier>(
+        create: (context) => registeredInsectsNotifier,
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

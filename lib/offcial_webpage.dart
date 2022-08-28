@@ -1,7 +1,11 @@
-import 'dart:io';
+import 'dart:async';
+import 'dart:io'; // Add this import
 
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter/webview_flutter.dart'; // Add this import back
+
+import 'src/navigation_controls.dart'; // Add this import
+import 'src/web_view_stack.dart';
 
 class OfficialWebpage extends StatefulWidget {
   const OfficialWebpage({Key? key}) : super(key: key);
@@ -11,6 +15,7 @@ class OfficialWebpage extends StatefulWidget {
 }
 
 class _OfficialWebpageState extends State<OfficialWebpage> {
+  final controller = Completer<WebViewController>(); // Add this attribute
   // Hybrid Composition
   @override
   void initState() {
@@ -25,10 +30,12 @@ class _OfficialWebpageState extends State<OfficialWebpage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('公式サイト'),
+        actions: [
+          NavigationControls(controller: controller),
+        ],
+        // ... to here.
       ),
-      body: const WebView(
-        initialUrl: 'https://flutter.dev',
-      ),
+      body: WebViewStack(controller: controller),
     );
   }
 }

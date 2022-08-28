@@ -51,7 +51,7 @@ class FlutterOverboardPage extends StatelessWidget {
         body: '撮影したら[はんべつ]ボタンを押して\nはんべつしてみよう！',
         doAnimateImage: true),
     PageModel(
-        color: const Color(0xFFd9d379),
+        color: const Color(0xFFfcbbd1),
         imageAssetPath: 'assets/img/ss3.png',
         title: 'ずかんにとうろく',
         body: '撮ったむしは[とうろく]ボタンを押して\nずかんにとうろくできるよ！',

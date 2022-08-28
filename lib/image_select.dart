@@ -177,8 +177,12 @@ class _ImageSelectState extends State<ImageSelect> {
                             Padding(
                               padding: const EdgeInsets.only(
                                   top: 10, bottom: 10, right: 15, left: 15),
-                              child: Text(decodeInsectResult["results"][0]
-                                  ["insect_text"]),
+                              child: Text(
+                                decodeInsectResult["results"][0]["insect_text"],
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -241,7 +245,6 @@ class _ImageSelectState extends State<ImageSelect> {
                               builder: (context) => const IndexedStackBar(),
                             ),
                           );
-                          // TODO: 登録完了のリアクションが欲しい
                         },
                         child: Container(
                           child: const Center(

@@ -24,6 +24,7 @@ class MushiList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<RegisteredInsectsNotifier>(
       builder: (context, regInsects, child) => Scaffold(
+        backgroundColor: const Color(0xFFe3fcff),
         body: Container(
           child: SafeArea(
             child: Column(
@@ -32,6 +33,10 @@ class MushiList extends StatelessWidget {
                   leading: IconButton(
                     onPressed: () => Navigator.pop(context),
                     icon: const Icon(Icons.arrow_back),
+                  ),
+                  title: const Text(
+                    '虫ずかん',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Expanded(

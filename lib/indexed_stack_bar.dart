@@ -53,6 +53,7 @@ class _IndexedStackBarState extends State<IndexedStackBar> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightGreen.shade400,
         elevation: 0.0,
         onPressed: getImage,
         child: const Icon(Icons.add_a_photo),
@@ -60,7 +61,7 @@ class _IndexedStackBarState extends State<IndexedStackBar> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.lightBlue,
         onTap: (int index) {
           setState(() {
             _selectedIndex = index;

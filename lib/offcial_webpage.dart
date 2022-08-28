@@ -29,6 +29,7 @@ class _OfficialWebpageState extends State<OfficialWebpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: const Text('公式サイト'),
         actions: [
           NavigationControls(controller: controller),

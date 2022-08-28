@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: 2.0.15
   adobe_xd: ^2.0.1
   flutter_svg: ^1.0.3
+  webview_flutter:
 
 dev_dependencies:
   flutter_test:

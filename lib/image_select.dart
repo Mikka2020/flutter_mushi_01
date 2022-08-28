@@ -27,6 +27,35 @@ class _ImageSelectState extends State<ImageSelect> {
     debugPrint("print関数デバッグ!: " + selectImage.toString());
   }
 
+  // 全画面プログレスダイアログを表示する関数
+  void showProgressDialog(context) {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      transitionDuration: Duration.zero,
+      barrierColor: Colors.black.withOpacity(0.5),
+      pageBuilder: (BuildContext context, Animation animation,
+          Animation secondaryAnimation) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Material(
+                color: Colors.transparent,
+                child: Padding(
+                  padding: EdgeInsets.all(14.0),
+                  child: Text('はんべつ中...',
+                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                ),
+              ),
+              CircularProgressIndicator(),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   //画像判別APIアップロード
   Future upload(String filePath) async {
     // connect to localhost
@@ -46,19 +75,17 @@ class _ImageSelectState extends State<ImageSelect> {
       // jsondecode
 
       decodeResult = json.decode(responseString);
-      insectApi(decodeResult[0]['index']);
       print(decodeResult);
-    }
-  }
 
-  //昆虫情報API
-  Future insectApi(String id) async {
-    Uri uri = Uri.parse(insectEndpoint + '/' + id);
-    var insectResponse = await http.get(uri);
-    decodeInsectResult = json.decode(insectResponse.body);
-    print(decodeInsectResult["results"]);
-    // 遅延させて再読み込み
-    setState(() {});
+      //昆虫情報取得
+      Uri uri = Uri.parse(insectEndpoint + '/' + decodeResult[0]['index']);
+      var insectResponse = await http.get(uri);
+      decodeInsectResult = json.decode(insectResponse.body);
+      print(decodeInsectResult["results"]);
+      // 遅延させて再読み込み
+      Navigator.of(context, rootNavigator: true).pop();
+      setState(() {});
+    }
   }
 
   @override
@@ -164,7 +191,9 @@ class _ImageSelectState extends State<ImageSelect> {
                 padding: const EdgeInsets.only(top: 20),
                 child: decodeResult == null
                     ? InkWell(
-                        onTap: () {
+                        onTap: () async {
+                          showProgressDialog(context);
+                          await Future<dynamic>.delayed(Duration(seconds: 2));
                           upload(image.path);
                         },
                         child: Container(

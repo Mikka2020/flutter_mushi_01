@@ -1,3 +1,5 @@
+const int insectMaxId = 87;
+
 // for ios endpoint
 const endpointIos = "http://bravrr.bounceme.net:8081/predict";
 // for android endpoint

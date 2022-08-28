@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import "./../db/registered_insect_db.dart";
 
 class RegisteredInsectsNotifier extends ChangeNotifier {
-  final List<RegisteredInsect> _regInses = [];
+  final List<RegisteredInsect> _regInsects = [];
 
   RegisteredInsectsNotifier() {
     syncDb();
@@ -11,14 +11,14 @@ class RegisteredInsectsNotifier extends ChangeNotifier {
 
   void syncDb() async {
     RegisteredInsectsDb.read().then(
-      (val) => _regInses
+      (val) => _regInsects
         ..clear()
         ..addAll(val),
     );
     notifyListeners();
   }
 
-  List<RegisteredInsect> get regInses => _regInses;
+  List<RegisteredInsect> get regInsects => _regInsects;
 
   void add(RegisteredInsect regIns) async {
     await RegisteredInsectsDb.create(regIns);
@@ -28,14 +28,17 @@ class RegisteredInsectsNotifier extends ChangeNotifier {
 
 class RegisteredInsect {
   final int insectId;
+  final String filePath;
 
   RegisteredInsect({
     required this.insectId,
+    required this.filePath,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': insectId,
+      'filePath': filePath,
     };
   }
 }

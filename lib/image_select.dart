@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-import './config/uri.dart';
+import 'config/insect_api.dart';
 import 'indexed_stack_bar.dart';
 import 'models/registered_insect.dart';
 
@@ -193,7 +193,8 @@ class _ImageSelectState extends State<ImageSelect> {
                     ? InkWell(
                         onTap: () async {
                           showProgressDialog(context);
-                          await Future<dynamic>.delayed(Duration(seconds: 2));
+                          await Future<dynamic>.delayed(
+                              const Duration(seconds: 2));
                           upload(image.path);
                         },
                         child: Container(
@@ -223,8 +224,10 @@ class _ImageSelectState extends State<ImageSelect> {
                         onTap: () {
                           regInsects.add(
                             RegisteredInsect(
-                                insectId: decodeInsectResult["results"][0]
-                                    ["insect_id"]),
+                              insectId: decodeInsectResult["results"][0]
+                                  ["insect_id"],
+                              filePath: image.path,
+                            ),
                           );
                           Navigator.push(
                             context,

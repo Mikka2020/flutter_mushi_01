@@ -62,10 +62,29 @@ class _HomeState extends State<Home> {
             children: [
               const Spacer(),
               Padding(
-                padding: const EdgeInsets.all(50.0),
+                padding: const EdgeInsets.only(
+                    top: 50.0, bottom: 5.0, left: 50.0, right: 50.0),
                 // ここを追加
                 child: Image.asset('assets/img/logo.png'),
               ),
+              Container(
+                padding: const EdgeInsets.only(
+                    top: 5.0, bottom: 5.0, left: 20.0, right: 20.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.shade600, width: 2.0),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: const Text(
+                  "撮って楽しく学べる虫ずかん",
+                  style: TextStyle(
+                      fontSize: 15,
+                      backgroundColor: Colors.white,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+              const Spacer(),
               Container(
                 child: Center(
                   child: Column(

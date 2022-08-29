@@ -38,14 +38,17 @@ class InsectGridItem extends StatelessWidget {
                     ),
                   ),
                 },
-                child: SizedBox(
-                  height: 90,
-                  width: 90,
-                  // 画像を表示する
-                  child: Image(
-                    image: FileImage(File(regInsectFilePath)),
+                child: Hero(
+                  tag: insect!.id,
+                  child: SizedBox(
                     height: 90,
                     width: 90,
+                    // 画像を表示する
+                    child: Image(
+                      image: FileImage(File(regInsectFilePath)),
+                      height: 90,
+                      width: 90,
+                    ),
                   ),
                 ),
               ),

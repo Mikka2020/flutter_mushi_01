@@ -45,10 +45,13 @@ class InsectDetail extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    child: Image(
-                      image: FileImage(File(regInsectFilePath)),
-                      height: 200,
-                      width: 200,
+                    child: Hero(
+                      tag: insect.id,
+                      child: Image(
+                        image: FileImage(File(regInsectFilePath)),
+                        height: 200,
+                        width: 200,
+                      ),
                     ),
                   ),
                   Align(

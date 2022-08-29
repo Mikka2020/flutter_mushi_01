@@ -217,10 +217,15 @@ class _ImageSelectState extends State<ImageSelect> {
                           height: 50,
                           width: 140,
                           decoration: BoxDecoration(
-                            color: const Color(0x80bf7107),
+                            color: const Color(0xeeffad33),
                             borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(
-                                width: 4.0, color: const Color(0xffb4b4b4)),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color(0x70000000),
+                                offset: Offset(0, 3),
+                                blurRadius: 5,
+                              ),
+                            ],
                           ),
                         ),
                       )
@@ -262,10 +267,15 @@ class _ImageSelectState extends State<ImageSelect> {
                           height: 50,
                           width: 140,
                           decoration: BoxDecoration(
-                            color: const Color(0x80bf7107),
+                            color: const Color(0xeeffad33),
                             borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(
-                                width: 4.0, color: const Color(0xffb4b4b4)),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color(0x70000000),
+                                offset: Offset(0, 3),
+                                blurRadius: 5,
+                              ),
+                            ],
                           ),
                         ),
                       ),

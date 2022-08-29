@@ -34,9 +34,9 @@ class FlutterOverboardPage extends StatelessWidget {
   final pages = [
     PageModel(
         color: const Color(0xFF79d9bf),
-        imageAssetPath: 'assets/0.png',
-        title: '[アプリ名]',
-        body: 'このアプリは虫を撮影して学べる虫図鑑アプリです！',
+        imageAssetPath: 'assets/img/logo.png',
+        title: 'むしコレ',
+        body: 'このアプリは虫を撮影して楽しく学べる虫図鑑アプリです！',
         doAnimateImage: true),
     PageModel(
         color: const Color(0xFFa679d9),

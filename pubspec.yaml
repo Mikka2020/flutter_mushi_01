@@ -20,6 +20,7 @@ dependencies:
   adobe_xd: ^2.0.1
   flutter_svg: ^1.0.3
   webview_flutter:
+  flutter_launcher_icons: ^0.10.0
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +33,10 @@ flutter:
   assets:
   - assets/
   - assets/img/
+  - assets/appicon/
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/appicon/icon.png"
+  min_sdk_android: 21

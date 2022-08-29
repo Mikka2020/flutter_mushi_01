@@ -41,6 +41,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  static const bigButtoncolor = Color(0xeeffad33);
+  static const buttonIconColor = Color(0xffabf04a);
+
   int itemCount(List<RegisteredInsect> regInsects) {
     return regInsects.length;
   }
@@ -93,8 +96,8 @@ class _HomeState extends State<Home> {
                       const Text(
                         'みつけた数',
                         style: TextStyle(
-                          fontSize: 18,
-                          color: Color(0xaabf7107),
+                          fontSize: 19,
+                          color: Color(0xaaffb700),
                           fontWeight: FontWeight.w700,
                         ),
                         softWrap: false,
@@ -107,7 +110,7 @@ class _HomeState extends State<Home> {
                             style: const TextStyle(
                               fontFamily: 'Tsukushi A Round Gothic',
                               fontSize: 28,
-                              color: Color(0xddbf7907),
+                              color: bigButtoncolor,
                               fontWeight: FontWeight.w800,
                             ),
                             softWrap: false,
@@ -123,11 +126,11 @@ class _HomeState extends State<Home> {
                   color: const Color(0xffffffff),
                   borderRadius: BorderRadius.circular(10.0),
                   border:
-                      Border.all(width: 4.0, color: const Color(0xffb4b4b4)),
+                      Border.all(width: 2.0, color: const Color(0xff6b6b6b)),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -141,18 +144,18 @@ class _HomeState extends State<Home> {
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               // Adobe XD layer: 'あそびかたアイコン' (shape)
-                              Container(
+                              SizedBox(
                                 width: 40,
                                 height: 40,
                                 child: Icon(
                                   Icons.help_outline,
-                                  color: Colors.lightGreenAccent,
+                                  color: buttonIconColor,
                                   size: 40.0,
                                 ),
                               ),
-                              const Text(
+                              Text(
                                 'あそびかた',
                                 style: TextStyle(
                                   fontFamily: 'Tsukushi A Round Gothic',
@@ -168,10 +171,15 @@ class _HomeState extends State<Home> {
                         height: 90,
                         width: 140,
                         decoration: BoxDecoration(
-                          color: const Color(0xddbf7107),
+                          color: bigButtoncolor,
                           borderRadius: BorderRadius.circular(10.0),
-                          border: Border.all(
-                              width: 4.0, color: const Color(0xffb4b4b4)),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color(0x70000000),
+                              offset: Offset(0, 3),
+                              blurRadius: 5,
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -194,7 +202,7 @@ class _HomeState extends State<Home> {
                                 child: Icon(
                                   Icons.screen_search_desktop_outlined,
                                   size: 40.0,
-                                  color: Colors.lightGreenAccent,
+                                  color: buttonIconColor,
                                 ),
                               ),
                               Text(
@@ -213,10 +221,15 @@ class _HomeState extends State<Home> {
                         height: 90,
                         width: 140,
                         decoration: BoxDecoration(
-                          color: const Color(0xddbf7107),
+                          color: bigButtoncolor,
                           borderRadius: BorderRadius.circular(10.0),
-                          border: Border.all(
-                              width: 4.0, color: const Color(0xffb4b4b4)),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color(0x70000000),
+                              offset: Offset(0, 3),
+                              blurRadius: 5,
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -242,7 +255,7 @@ class _HomeState extends State<Home> {
                           width: 55,
                           child: Icon(
                             Icons.menu_book_outlined,
-                            color: Colors.lightGreenAccent,
+                            color: buttonIconColor,
                             size: 55.0,
                           ),
                         ),
@@ -264,11 +277,15 @@ class _HomeState extends State<Home> {
                     height: 120,
                     width: 180,
                     decoration: BoxDecoration(
-                      color: const Color(0xddbf7107),
-                      borderRadius: BorderRadius.circular(10.0),
-                      border: Border.all(
-                          width: 4.0, color: const Color(0xffb4b4b4)),
-                    ),
+                        color: bigButtoncolor,
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x70000000),
+                            offset: Offset(0, 3),
+                            blurRadius: 5,
+                          ),
+                        ]),
                   ),
                 ),
               ),

@@ -7,6 +7,7 @@ class FloorMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFffffff),
       body: SafeArea(
         child: Column(
           children: [
@@ -21,7 +22,10 @@ class FloorMap extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.only(bottom: 36.0, top: 8.0),
-              child: Text("※画像の拡大縮小ができます"),
+              child: Text(
+                "※画像の拡大縮小ができます",
+                style: TextStyle(fontSize: 16.0),
+              ),
             ),
           ],
         ),

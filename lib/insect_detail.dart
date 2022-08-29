@@ -55,13 +55,23 @@ class InsectDetail extends StatelessWidget {
                     ),
                   ),
                   Align(
-                    alignment: Alignment.topCenter,
-                    child: Text(
-                      insect.name,
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      children: [
+                        Text(
+                          insect.name,
+                          style: const TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          insect.ka + '科 ' + insect.moku + '目',
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

@@ -55,6 +55,11 @@ class _HomeState extends State<Home> {
         body: Column(
           children: [
             const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              // ここを追加
+              child: Image.asset('assets/img/logo.png'),
+            ),
             Container(
               child: Center(
                 child: Column(

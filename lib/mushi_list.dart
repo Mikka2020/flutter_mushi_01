@@ -43,7 +43,21 @@ class MushiList extends StatelessWidget {
                   child: Consumer<InsectsNotifier>(
                     builder: (context, insects, child) {
                       if (itemCount(regInsects.regInsects) == 0) {
-                        return const Text("no data");
+                        return Container(
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(45),
+                                child: Image.asset('assets/img/ss1.png'),
+                              ),
+                              const Text(
+                                "まずはむしを撮影してみよう！",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        );
                       } else {
                         return GridView.builder(
                           gridDelegate:

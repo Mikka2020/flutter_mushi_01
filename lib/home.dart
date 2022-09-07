@@ -42,7 +42,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   static const bigButtoncolor = Color(0xeeffad33);
-  static const buttonIconColor = Color(0xffabf04a);
+  static const buttonIconColor = Color(0xff96d95f);
 
   int itemCount(List<RegisteredInsect> regInsects) {
     return regInsects.length;
